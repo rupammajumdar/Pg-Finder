@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIT Raipur PG Finder - Find the Best PG Near NIT Raipur</title>
+    <meta name="description" content="Compare nearby PGs, view room details, and find the perfect Paying Guest accommodation near NIT Raipur. Access owner details for just ₹50.">
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo" id="nav-logo">
+                <span class="logo-accent-blue">NITR</span><span class="logo-accent-orange"> PG Finder</span>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#home" class="nav-link active" id="nav-link-home">Home</a></li>
+                    <li><a href="#listings" class="nav-link" id="nav-link-listings">PG List</a></li>
+                    <li><a href="#subscription" class="nav-link" id="nav-link-subscription">Subscription</a></li>
+                    <li><a href="#contact" class="nav-link" id="nav-link-contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-primary btn-sm btn-sub-status" id="nav-sub-btn">Unlock All Details 🔒</button>
+                <div class="hamburger" id="hamburger-menu" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-up">Find the Best PG Near <span class="text-gradient">NIT Raipur</span></h1>
+            <p class="hero-subtitle animate-up delay-1">Compare nearby PGs, view high-quality photos, and unlock complete owner details with a one-time ₹50 subscription.</p>
+            
+            <!-- Hero Search Bar -->
+            <div class="search-container animate-up delay-2">
+                <div class="search-box">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="hero-search-input" placeholder="Search by PG name, location, or landmark...">
+                    <button class="btn btn-secondary" id="hero-search-btn">Search</button>
+                </div>
+            </div>
+
+            <!-- Hero Action Buttons -->
+            <div class="hero-buttons animate-up delay-3">
+                <a href="#listings" class="btn btn-primary btn-lg" id="btn-explore-pg">Explore PGs</a>
+                <a href="#subscription" class="btn btn-outline btn-lg" id="btn-hero-subscribe">Why Subscribe?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listings & Filters Section -->
+    <section class="listings-section" id="listings">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="badge">Accommodations</span>
+                <h2 class="section-title">Available PGs Near College</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="listings-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Filters</h3>
+                        <button id="btn-reset-filters" class="btn-text">Reset All</button>
+                    </div>
+
+                    <!-- Search within results -->
+                    <div class="filter-group">
+                        <label for="filter-search">Keyword Search</label>
+                        <input type="text" id="filter-search" placeholder="Type name, landmark...">
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <label for="filter-price">Max Monthly Rent: <span id="price-val">₹15,000</span></label>
+                        <input type="range" id="filter-price" min="3000" max="15000" step="500" value="15000" class="range-slider">
+                        <div class="range-limits">
+                            <span>₹3,000</span>
+                            <span>₹15,000</span>
+                        </div>
+                    </div>
+
+                    <!-- Distance Filter -->
+                    <div class="filter-group">
+                        <label for="filter-distance">Max Distance from NIT: <span id="distance-val">5.0 km</span></label>
+                        <input type="range" id="filter-distance" min="0.2" max="5.0" step="0.1" value="5.0" class="range-slider">
+                        <div class="range-limits">
+                            <span>0.2 km</span>
+                            <span>5.0 km</span>
+                        </div>
+                    </div>
+
+                    <!-- Minimum Rating -->
+                    <div class="filter-group">
+                        <label for="filter-rating">Min Rating</label>
+                        <select id="filter-rating" class="form-select">
+                            <option value="0">All Ratings</option>
+                            <option value="4.5">4.5+ ★ Very Good</option>
+                            <option value="4.0">4.0+ ★ Good</option>
+                            <option value="3.5">3.5+ ★ Average</option>
+                        </select>
+                    </div>
+
+                    <!-- Facilities Checklist -->
+                    <div class="filter-group">
+                        <label>Facilities Required</label>
+                        <div class="checkbox-list">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="facility-wifi" value="WiFi">
+                                <span class="checkmark"></span>
+                                WiFi
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="facility-food" value="Food">
+                                <span class="checkmark"></span>
+                                Food / Mess
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="facility-ac" value="AC">
+                                <span class="checkmark"></span>
+                                Air Conditioner
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="facility-laundry" value="Laundry">
+                                <span class="checkmark"></span>
+                                Laundry
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Sorting Options -->
+                    <div class="filter-group">
+                        <label for="filter-sort">Sort By</label>
+                        <select id="filter-sort" class="form-select">
+                            <option value="recommended">Recommended</option>
+                            <option value="rent-asc">Rent: Low to High</option>
+                            <option value="rent-desc">Rent: High to Low</option>
+                            <option value="distance-asc">Distance: Nearest First</option>
+                            <option value="rating-desc">Rating: Highest First</option>
+                        </select>
+                    </div>
+                </aside>
+
+                <!-- PG Listings Grid -->
+                <main class="listings-main">
+                    <!-- Dynamic Search Stats -->
+                    <div class="listings-stats">
+                        <span id="results-count">Showing 12 PGs</span>
+                        <div class="subscription-status-indicator" id="sub-indicator">
+                            <span class="indicator-dot locked"></span>
+                            <span class="indicator-text">Premium details locked</span>
+                        </div>
+                    </div>
+
+                    <!-- Loader Spinner -->
+                    <div id="loader" class="loader-container hide">
+                        <div class="spinner"></div>
+                        <p>Searching PG options...</p>
+                    </div>
+
+                    <!-- PG Grid Container -->
+                    <div class="pg-grid" id="pg-grid">
+                        <!-- PG Cards will be dynamically inserted here by script.js -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="empty-state" class="empty-state-container hide">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="empty-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        <h3>No PGs Match Your Filters</h3>
+                        <p>Try expanding your search query, increasing distance, or clearing checkboxes.</p>
+                        <button id="btn-clear-filters-empty" class="btn btn-primary btn-sm">Clear Filters</button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section class="subscription-section" id="subscription">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="badge orange">Subscription Plan</span>
+                <h2 class="section-title text-white">Unlock Seamless Booking</h2>
+                <div class="divider orange"></div>
+            </div>
+
+            <div class="pricing-card-container">
+                <div class="pricing-card glass-card">
+                    <div class="pricing-badge">STUDENT EXCLUSIVE</div>
+                    <h3 class="pricing-title">All-Access Premium Pass</h3>
+                    <div class="pricing-price">
+                        <span class="currency">₹</span>
+                        <span class="amount">50</span>
+                        <span class="period">/ one-time</span>
+                    </div>
+                    <p class="pricing-tagline">No monthly fees. No recurring billing. Pay once, use until you find a room.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            View exact PG address and locations
+                        </li>
+                        <li>
+                            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Access PG owner contact numbers
+                        </li>
+                        <li>
+                            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Unlock high-res room galleries
+                        </li>
+                        <li>
+                            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Book directly online with pre-filled forms
+                        </li>
+                        <li>
+                            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            See precise room availability status
+                        </li>
+                        <li>
+                            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Unlimited details access for 12+ premium PGs
+                        </li>
+                    </ul>
+                    <button class="btn btn-secondary btn-full" id="btn-pay-subscription">Pay ₹50 & Unlock Now</button>
+                    <p class="pricing-footnote">Secured via simulated instant UPI checkouts. Safe for mobile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="badge">Support</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="contact-layout">
+                <!-- Info cards -->
+                <div class="contact-info">
+                    <div class="info-card glass-card">
+                        <div class="info-icon blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Location</h4>
+                            <p>Great Eastern Rd, Amanaka, Raipur, Chhattisgarh 492010 (Near NIT Raipur Main Gate)</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card glass-card">
+                        <div class="info-icon orange">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email Us</h4>
+                            <p>support@nitrpgfinder.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card glass-card">
+                        <div class="info-icon blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Call Helpdesk</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="contact-form-container glass-card">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Full Name</label>
+                            <input type="text" id="contact-name" class="form-input" placeholder="Your Name" required>
+                            <span class="error-msg" id="contact-name-error">Please enter your name</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" class="form-input" placeholder="student@example.com" required>
+                            <span class="error-msg" id="contact-email-error">Please enter a valid email</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Your Message</label>
+                            <textarea id="contact-message" class="form-textarea" placeholder="How can we help you? Tell us about your PG preference..." required></textarea>
+                            <span class="error-msg" id="contact-message-error">Please enter your message</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="btn-submit-contact">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <span class="logo-accent-blue text-white">NITR</span><span class="logo-accent-orange"> PG Finder</span>
+                </a>
+                <p>Simplifying the hosteling and PG hunting journey for NIT Raipur students. High-quality accommodations, complete information transparently sharing owner details, pricing, and amenities.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#listings">PG Listings</a></li>
+                    <li><a href="#subscription">Subscription Plan</a></li>
+                    <li><a href="#contact">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-legal">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#privacy" id="link-privacy">Privacy Policy</a></li>
+                    <li><a href="#terms" id="link-terms">Terms of Service</a></li>
+                    <li><a href="#disclaimer" id="link-disclaimer">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NIT Raipur PG Finder. Created for students of NIT Raipur. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Subscription Modal -->
+    <div class="modal" id="sub-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-wrapper">
+            <div class="modal-content glass-card">
+                <button class="modal-close" id="sub-modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-header-icon orange">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="lock-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                </div>
+                <h3 class="modal-title">Unlock All PG Details</h3>
+                <p class="modal-description">Subscribe for only <strong>₹50</strong> to unlock full credentials for all listed accommodations.</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="benefit-bullet">✓</span>
+                        <span>Unlock Owner contact details immediately</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-bullet">✓</span>
+                        <span>View complete image gallery and room setup photos</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-bullet">✓</span>
+                        <span>Detailed location (exact address) & Google Maps navigation</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-bullet">✓</span>
+                        <span>Instant online pre-booking to reserve rooms</span>
+                    </div>
+                </div>
+                <div class="payment-simulator" id="payment-stage-1">
+                    <p class="simulation-note">This is a simulated secure UPI checkout. No real money will be charged.</p>
+                    <button class="btn btn-secondary btn-full" id="btn-confirm-payment">Pay ₹50 & Unlock Now</button>
+                </div>
+                <div class="payment-loading hide" id="payment-stage-2">
+                    <div class="spinner"></div>
+                    <p>Processing payment transaction securely...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- More Info Modal -->
+    <div class="modal large-modal" id="info-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-wrapper">
+            <div class="modal-content glass-card">
+                <button class="modal-close" id="info-modal-close" aria-label="Close modal">&times;</button>
+                
+                <!-- Gallery Section -->
+                <div class="gallery-slider">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <!-- Dynamic Slider Images -->
+                    </div>
+                    <button class="slider-btn prev" id="slider-prev" aria-label="Previous image">&#10094;</button>
+                    <button class="slider-btn next" id="slider-next" aria-label="Next image">&#10095;</button>
+                    <div class="slider-dots" id="slider-dots">
+                        <!-- Dynamic Dots -->
+                    </div>
+                </div>
+
+                <!-- Modal Body Grid -->
+                <div class="modal-body-grid">
+                    <div class="modal-main-details">
+                        <div class="modal-title-row">
+                            <h3 class="modal-title" id="info-pg-name">PG Name</h3>
+                            <span class="availability-badge" id="info-availability">Available</span>
+                        </div>
+                        <div class="modal-meta-row">
+                            <span class="rating-badge" id="info-rating">4.5 ★</span>
+                            <span class="distance-text" id="info-distance">0.5 km from NIT Raipur</span>
+                            <span class="rent-tag" id="info-rent">Starting ₹6,000/mo</span>
+                        </div>
+                        
+                        <div class="modal-section-div">
+                            <h4>Description</h4>
+                            <p class="pg-description-text" id="info-description">Description text here...</p>
+                        </div>
+
+                        <div class="modal-section-div">
+                            <h4>Facilities Provided</h4>
+                            <div class="facilities-grid" id="info-facilities">
+                                <!-- Dynamic facilities list -->
+                            </div>
+                        </div>
+
+                        <div class="modal-section-div">
+                            <h4>Room Types Available</h4>
+                            <div class="room-types-list" id="info-room-types">
+                                <!-- Dynamic room types -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Contact/Booking Box -->
+                    <div class="modal-sidebar-card">
+                        <div class="owner-contact-box" id="info-unlocked-details">
+                            <h4>Owner & Address Information</h4>
+                            <div class="contact-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="contact-svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                                <div>
+                                    <span class="contact-label">Owner Name</span>
+                                    <span class="contact-value" id="info-owner-name">Rajesh Kumar</span>
+                                </div>
+                            </div>
+                            <div class="contact-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="contact-svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                <div>
+                                    <span class="contact-label">Mobile Number</span>
+                                    <span class="contact-value" id="info-owner-phone">+91 99988 77766</span>
+                                </div>
+                            </div>
+                            <div class="contact-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="contact-svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <div>
+                                    <span class="contact-label">Address</span>
+                                    <span class="contact-value" id="info-address">Kota Road, near NIT campus, Raipur</span>
+                                </div>
+                            </div>
+
+                            <a href="https://maps.google.com" target="_blank" class="btn btn-outline btn-full btn-sm maps-btn" id="info-maps-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="maps-svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                                </svg>
+                                Open in Google Maps
+                            </a>
+
+                            <button class="btn btn-primary btn-full" id="info-book-btn">Book Accommodation Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-wrapper">
+            <div class="modal-content glass-card">
+                <button class="modal-close" id="booking-modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-header-icon blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="booking-svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="modal-title">Book Accommodation</h3>
+                <p class="modal-description" id="booking-pg-name-sub">Reserve your spot at PG Name</p>
+                
+                <form id="booking-form">
+                    <input type="hidden" id="booking-pg-id">
+                    <div class="form-group">
+                        <label for="book-name">Full Name</label>
+                        <input type="text" id="book-name" class="form-input" required>
+                        <span class="error-msg" id="book-name-error">Please enter your name</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-phone">Mobile Number</label>
+                            <input type="tel" id="book-phone" class="form-input" placeholder="10-digit number" required>
+                            <span class="error-msg" id="book-phone-error">Please enter 10-digit mobile number</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-email">Email Address</label>
+                            <input type="email" id="book-email" class="form-input" required>
+                            <span class="error-msg" id="book-email-error">Please enter valid email</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-college">College / Institute</label>
+                        <input type="text" id="book-college" class="form-input" value="NIT Raipur" required>
+                        <span class="error-msg" id="book-college-error">Please enter college name</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-date">Preferred Move-in Date</label>
+                            <input type="date" id="book-date" class="form-input" required>
+                            <span class="error-msg" id="book-date-error">Select move-in date</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-room-type">Room Type Preferred</label>
+                            <select id="book-room-type" class="form-select" required>
+                                <!-- Dynamic room options -->
+                            </select>
+                            <span class="error-msg" id="book-room-error">Select room type</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="btn-submit-booking">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal (Unified) -->
+    <div class="modal" id="success-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-wrapper">
+            <div class="modal-content glass-card text-center">
+                <button class="modal-close" id="success-modal-close" aria-label="Close modal">&times;</button>
+                <div class="success-checkmark">
+                    <div class="check-icon-circle">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                    </div>
+                </div>
+                <h3 class="modal-title" id="success-title">Action Successful</h3>
+                <p class="modal-description" id="success-message">Details have been loaded successfully.</p>
+                <button class="btn btn-primary" id="btn-success-close">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dev Utilities (Persistent Reset Button for Testing) -->
+    <div class="dev-panel">
+        <button class="btn-dev-toggle" id="btn-toggle-sub-dev">Toggle Premium Lock (Simulated)</button>
+    </div>
+
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
